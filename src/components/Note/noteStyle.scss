@@ -1,0 +1,23 @@
+.note {
+    border: 1px solid rgba(54, 54, 54, 0.247);
+    position: relative;
+    min-height: 200px;
+    .edit-icon {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        cursor: pointer;
+    }
+    .trash-icon{
+        position: absolute;
+        top: 5px;
+        right: 34px;
+        cursor: pointer;
+    }
+}
+
+.bg-normal {
+    background: linear-gradient(135deg, #1e5799 0%,#2989d8 50%,#70afd1 100%);
+    color: white;
+    text-shadow: 2px 2px 8px rgb(61, 61, 61);
+}

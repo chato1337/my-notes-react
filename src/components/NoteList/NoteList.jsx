@@ -2,23 +2,29 @@ import axios from 'axios'
 import React, {useEffect} from 'react'
 import { connect } from 'react-redux'
 import {getNotes} from '../../context/NoteActions'
+import AddNote from '../AddNote/AddNote'
+import AddNoteForm from '../AddNoteForm/AddNoteForm'
 import Note from '../Note/Note'
+import './noteListStyle.scss'
+import {Backend} from '../../constants/MainCostants'
 
 const NoteList = (props) => {
     const {notes} = props
     useEffect(async () => {
-        const res = await axios.get("https://young-escarpment-43192.herokuapp.com/");
+        const res = await axios.get(Backend.API_URL);
         // setNoteState(res.data)
         props.getNotes([...res.data])
     }, [])
     console.log(notes)
     return (
-        <div>
+        <div className="note-list">
             {notes.map(note => {
                 return (
                     <Note key={note._id} {...note} />
                 )
             })}
+            <AddNoteForm />
+            <AddNote />
         </div>
     )
 }
