@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React, {useEffect} from 'react'
 import { connect } from 'react-redux'
 import {getNotes} from '../../context/NoteActions'
@@ -6,16 +5,19 @@ import AddNote from '../AddNote/AddNote'
 import AddNoteForm from '../AddNoteForm/AddNoteForm'
 import Note from '../Note/Note'
 import './noteListStyle.scss'
-import {Backend} from '../../constants/MainCostants'
+import NoteService from '../../services/NoteService'
 
 const NoteList = (props) => {
     const {notes} = props
-    useEffect(async () => {
-        const res = await axios.get(Backend.API_URL);
-        // setNoteState(res.data)
-        props.getNotes([...res.data])
+
+    useEffect(() => {
+        const call = async () => {
+            const res = await NoteService.getNotes()
+            props.getNotes([...res])
+        }
+        call()
     }, [])
-    console.log(notes)
+
     return (
         <div className="note-list">
             {notes.map(note => {

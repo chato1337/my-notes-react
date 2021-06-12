@@ -11,7 +11,13 @@ import { createStore } from "redux";
 
 const initialState = {
 	notes: [],
-	note: {},
+	note: {
+		_id: null,
+		title: "",
+		body: "",
+		footer: ""
+	},
+	modal: false
 };
 
 const store = createStore(NoteReducer, initialState);

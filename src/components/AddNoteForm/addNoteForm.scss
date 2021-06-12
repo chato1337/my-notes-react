@@ -1,0 +1,40 @@
+.form-container.hide {
+    display: none;
+}
+
+.form-container {
+    position: fixed;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    background-color: rgba(0, 0, 0, 0.336);
+
+    .add-note-form{
+        border: 1px solid blue;
+        background-color: blanchedalmond;
+        border-radius: 5px;
+        padding: 10px;
+        position: relative;
+        svg {
+            position: absolute;
+            right: 5px;
+            cursor: pointer;
+        }
+        h2 {
+            margin-top: 5px;
+        }
+        input, textarea, button {
+            display: block;
+            margin: 0 auto;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        input {
+            // fix this
+            width: 97%;
+        }
+    }
+}
