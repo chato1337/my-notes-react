@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/my-notes-react/static/css/main.848ac5f1.chunk.css",
-    "main.js": "/my-notes-react/static/js/main.fb760d70.chunk.js",
-    "main.js.map": "/my-notes-react/static/js/main.fb760d70.chunk.js.map",
-    "runtime-main.js": "/my-notes-react/static/js/runtime-main.7b76f842.js",
-    "runtime-main.js.map": "/my-notes-react/static/js/runtime-main.7b76f842.js.map",
-    "static/js/2.f2cbe14d.chunk.js": "/my-notes-react/static/js/2.f2cbe14d.chunk.js",
-    "static/js/2.f2cbe14d.chunk.js.map": "/my-notes-react/static/js/2.f2cbe14d.chunk.js.map",
-    "static/js/3.714b4512.chunk.js": "/my-notes-react/static/js/3.714b4512.chunk.js",
-    "static/js/3.714b4512.chunk.js.map": "/my-notes-react/static/js/3.714b4512.chunk.js.map",
+    "main.css": "/my-notes-react/static/css/main.698ec00d.chunk.css",
+    "main.js": "/my-notes-react/static/js/main.047949bb.chunk.js",
+    "main.js.map": "/my-notes-react/static/js/main.047949bb.chunk.js.map",
+    "runtime-main.js": "/my-notes-react/static/js/runtime-main.8fe56b49.js",
+    "runtime-main.js.map": "/my-notes-react/static/js/runtime-main.8fe56b49.js.map",
+    "static/js/2.023ede7a.chunk.js": "/my-notes-react/static/js/2.023ede7a.chunk.js",
+    "static/js/2.023ede7a.chunk.js.map": "/my-notes-react/static/js/2.023ede7a.chunk.js.map",
+    "static/js/3.46f60a79.chunk.js": "/my-notes-react/static/js/3.46f60a79.chunk.js",
+    "static/js/3.46f60a79.chunk.js.map": "/my-notes-react/static/js/3.46f60a79.chunk.js.map",
     "index.html": "/my-notes-react/index.html",
     "service-worker.js": "/my-notes-react/service-worker.js",
     "service-worker.js.map": "/my-notes-react/service-worker.js.map",
-    "static/css/main.848ac5f1.chunk.css.map": "/my-notes-react/static/css/main.848ac5f1.chunk.css.map",
-    "static/js/2.f2cbe14d.chunk.js.LICENSE.txt": "/my-notes-react/static/js/2.f2cbe14d.chunk.js.LICENSE.txt"
+    "static/css/main.698ec00d.chunk.css.map": "/my-notes-react/static/css/main.698ec00d.chunk.css.map",
+    "static/js/2.023ede7a.chunk.js.LICENSE.txt": "/my-notes-react/static/js/2.023ede7a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.7b76f842.js",
-    "static/js/2.f2cbe14d.chunk.js",
-    "static/css/main.848ac5f1.chunk.css",
-    "static/js/main.fb760d70.chunk.js"
+    "static/js/runtime-main.8fe56b49.js",
+    "static/js/2.023ede7a.chunk.js",
+    "static/css/main.698ec00d.chunk.css",
+    "static/js/main.047949bb.chunk.js"
   ]
 }
