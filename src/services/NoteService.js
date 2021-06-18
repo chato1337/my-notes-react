@@ -1,5 +1,5 @@
 import axios from "axios";
-import {Backend} from "../constants/MainCostants"
+import {Backend, Methods} from "../constants/MainCostants"
 
 class NoteService {
     static getNotes() {
@@ -10,7 +10,19 @@ class NoteService {
     static createNote(newNote) {
         return axios.post(Backend.API_URL+Backend.ROUTES.addNoteUrl, newNote)
             .then(res => window.location.reload())
-            .then(err => console.log(err))
+            .catch(err => console.log(err))
+    }
+
+    static editNote(note) {
+        return axios.put(Backend.API_URL+Backend.ROUTES.editNoteUrl, note)
+            .then(res => window.location.reload())
+            .catch(err => console.log(err))
+    }
+
+    static deleteNote(note) {
+        return axios.delete(Backend.API_URL+Backend.ROUTES.deleteNoteUrl, {data: note})
+        .then(response => Methods.refreshApp())
+        .catch(err => console.log(err))
     }
 }
 

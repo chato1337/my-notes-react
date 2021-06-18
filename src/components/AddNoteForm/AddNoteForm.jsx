@@ -14,7 +14,6 @@ const AddNoteForm = (props) => {
     useEffect(() => {
         if(note._id){
             setFormState(true)
-            console.log('paso por aqui')
         }else {
             setFormState(false)
         }
@@ -24,6 +23,14 @@ const AddNoteForm = (props) => {
         if (formState) {
             console.log('modo edicion!')
             //conectar con el api
+            const editedNote = {
+                _id: note._id,
+                title: noteTitle.current.value,
+                body: noteBody.current.value,
+                footer: 'chatuzPark'
+            }
+            NoteService.editNote(editedNote)
+            props.setModal(!modal)
         }else {
             console.log(noteTitle.current.value, noteBody.current.value);
             const newNote = {
