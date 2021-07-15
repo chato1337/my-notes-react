@@ -21,7 +21,6 @@ const AddNoteForm = (props) => {
     }, [modal])
 
     const handleSubmit = () => {
-        console.log(color.current.value)
         if (formState) {
             console.log('modo edicion!')
             //conectar con el api
@@ -54,13 +53,13 @@ const AddNoteForm = (props) => {
             _id: null,
             title: "",
             body: "",
-            footer: ""
+            footer: "",
+            color: "normal"
         }
         props.setNote(resetNote)
     }
 
-    console.log(note)
-
+    // console.log(note)
 
     return (
 			<div className={modal ? "form-container" : "form-container hide"}>
@@ -76,7 +75,8 @@ const AddNoteForm = (props) => {
 						rows="10"
 					></textarea>
                     <label htmlFor="">color note:</label>
-                    <select ref={color}>
+                    <select ref={color} defaultValue={note.body}>
+                        <option value="normal">normal</option>
                         <option value="yellow">yellow</option>
                         <option value="green">green</option>
                         <option value="orange">orange</option>

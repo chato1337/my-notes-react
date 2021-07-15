@@ -3,6 +3,9 @@ export class Backend {
 		addNoteUrl: "note",
 		editNoteUrl: "edit-note",
 		deleteNoteUrl: "delete",
+
+		//users
+		addUserUrl: "signup"
 	};
 
 	static API_URL = "https://young-escarpment-43192.herokuapp.com/";

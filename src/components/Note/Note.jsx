@@ -39,8 +39,8 @@ const Note = (props) => {
         <div className={`note bg-${color || 'normal'}`}>
             <BiEdit onClick={() => handleClick()} className="edit-icon" size={24} />
             <FiTrash2 onClick={() => handleDelete()} className="trash-icon" size={22} />
-            <h2>{title}</h2>
-            <p>{body}</p>
+            <h3>{title}</h3>
+            <pre>{body}</pre>
         </div>
     )
 }
