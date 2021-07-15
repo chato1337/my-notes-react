@@ -19,8 +19,6 @@ const Note = (props) => {
         props.setModal(!modal)
     }
 
-    console.log(color)
-
     const handleDelete = () => {
         Swal.fire({
                 title: "Estas seguro?",

@@ -9,6 +9,7 @@ const AddNoteForm = (props) => {
     const {modal, note} = props
     const noteTitle = useRef(null)
     const noteBody = useRef(null);
+    const color = useRef(null)
     const [formState, setFormState] = useState(false)
     
     useEffect(() => {
@@ -20,6 +21,7 @@ const AddNoteForm = (props) => {
     }, [modal])
 
     const handleSubmit = () => {
+        console.log(color.current.value)
         if (formState) {
             console.log('modo edicion!')
             //conectar con el api
@@ -27,6 +29,7 @@ const AddNoteForm = (props) => {
                 _id: note._id,
                 title: noteTitle.current.value,
                 body: noteBody.current.value,
+                color: color.current.value,
                 footer: 'chatuzPark'
             }
             NoteService.editNote(editedNote)
@@ -36,6 +39,7 @@ const AddNoteForm = (props) => {
             const newNote = {
                         title: noteTitle.current.value,
                         body: noteBody.current.value,
+                        color: color.current.value,
                         footer: 'chatuzPark'
                     };
             NoteService.createNote(newNote);
@@ -71,6 +75,12 @@ const AddNoteForm = (props) => {
 						cols="30"
 						rows="10"
 					></textarea>
+                    <label htmlFor="">color note:</label>
+                    <select ref={color}>
+                        <option value="yellow">yellow</option>
+                        <option value="green">green</option>
+                        <option value="orange">orange</option>
+                    </select>
 					<button onClick={() => handleSubmit()}>guardar</button>
 				</div>
 			</div>
