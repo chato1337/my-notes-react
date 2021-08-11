@@ -13,16 +13,19 @@ const AddNoteForm = (props) => {
     const [formState, setFormState] = useState(false)
     
     useEffect(() => {
-        console.log(note)
+        // console.log(note)
+        // console.log(noteTitle.current.value)
         if(note._id){
             setFormState(true)
+            noteTitle.current.value = note.title
+            noteBody.current.value = note.body
+            color.current.value = note.color
         }else {
             setFormState(false)
         }
     }, [modal])
 
     const handleClose = () => {
-        console.log('entro aca')
         props.setModal(!modal)
         //move to constant
         const resetNote = {
@@ -34,9 +37,9 @@ const AddNoteForm = (props) => {
         }
         props.setNote(resetNote)
 
-        noteTitle.current = ""
-        noteBody.current = ""
-        color.current = ""
+        noteTitle.current.value = ""
+        noteBody.current.value = ""
+        color.current.value = ""
     }
 
     const handleSubmit = async () => {
@@ -85,7 +88,7 @@ const AddNoteForm = (props) => {
 						rows="10"
 					></textarea>
                     <label htmlFor="">color note:</label>
-                    <select ref={color} defaultValue={note.body}>
+                    <select ref={color} defaultValue={note.color}>
                         <option value="normal">normal</option>
                         <option value="yellow">yellow</option>
                         <option value="green">green</option>

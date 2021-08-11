@@ -3,12 +3,12 @@ import './noteStyle.scss'
 import {BiEdit} from 'react-icons/bi'
 import { FiTrash2 } from "react-icons/fi";
 import { connect } from 'react-redux';
-import {setNote, setModal} from '../../context/NoteActions'
+import {setNote, setModal, getNotes} from '../../context/NoteActions'
 import Swal from 'sweetalert2';
 import NoteService from '../../services/NoteService';
 
 const Note = (props) => {
-    const {_id, title, body, footer, modal, color} = props
+    const {_id, title, body, footer, modal, color, getNotes} = props
     const handleClick = () => {
         props.setNote({
             _id: _id,
@@ -28,10 +28,12 @@ const Note = (props) => {
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Yes, delete it!",
-            }).then((result) => {
+            }).then(async (result) => {
                 if (result.isConfirmed) {
                     Swal.fire("Deleted!", "Your file has been deleted.", "success");
-                    NoteService.deleteNote({"_id": _id})
+                    await NoteService.deleteNote({"_id": _id})
+                    const noteList = await NoteService.getNotes()
+                    getNotes(noteList)
                 }
             });
     }
@@ -47,7 +49,8 @@ const Note = (props) => {
 
 const mapDispatchToProps = {
     setNote,
-    setModal
+    setModal,
+    getNotes
 }
 
 const mapStateToProps = state => {
