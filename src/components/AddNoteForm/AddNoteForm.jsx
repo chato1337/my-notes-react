@@ -3,16 +3,17 @@ import NoteService from '../../services/NoteService';
 import {AiOutlineCloseCircle} from 'react-icons/ai'
 import './addNoteForm.scss'
 import { connect } from 'react-redux';
-import { setModal, setNote } from '../../context/NoteActions';
+import { setModal, setNote, getNotes } from '../../context/NoteActions';
 
 const AddNoteForm = (props) => {
-    const {modal, note} = props
+    const {modal, note, getNotes} = props
     const noteTitle = useRef(null)
     const noteBody = useRef(null);
     const color = useRef(null)
     const [formState, setFormState] = useState(false)
     
     useEffect(() => {
+        console.log(note)
         if(note._id){
             setFormState(true)
         }else {
@@ -20,33 +21,8 @@ const AddNoteForm = (props) => {
         }
     }, [modal])
 
-    const handleSubmit = () => {
-        if (formState) {
-            console.log('modo edicion!')
-            //conectar con el api
-            const editedNote = {
-                _id: note._id,
-                title: noteTitle.current.value,
-                body: noteBody.current.value,
-                color: color.current.value,
-                footer: 'chatuzPark'
-            }
-            NoteService.editNote(editedNote)
-            props.setModal(!modal)
-        }else {
-            console.log(noteTitle.current.value, noteBody.current.value);
-            const newNote = {
-                        title: noteTitle.current.value,
-                        body: noteBody.current.value,
-                        color: color.current.value,
-                        footer: 'chatuzPark'
-                    };
-            NoteService.createNote(newNote);
-            props.setModal(!modal)
-        }
-    }
-
-    const handleClick = () => {
+    const handleClose = () => {
+        console.log('entro aca')
         props.setModal(!modal)
         //move to constant
         const resetNote = {
@@ -57,6 +33,40 @@ const AddNoteForm = (props) => {
             color: "normal"
         }
         props.setNote(resetNote)
+
+        noteTitle.current = ""
+        noteBody.current = ""
+        color.current = ""
+    }
+
+    const handleSubmit = async () => {
+        if (formState) {
+            console.log('modo edicion!')
+            //conectar con el api
+            const editedNote = {
+                _id: note._id,
+                title: noteTitle.current.value,
+                body: noteBody.current.value,
+                color: color.current.value,
+                footer: 'chatuzPark'
+            }
+            await NoteService.editNote(editedNote)
+            const noteList = await NoteService.getNotes()
+            getNotes(noteList)
+            handleClose()
+        }else {
+            console.log(noteTitle.current.value, noteBody.current.value);
+            const newNote = {
+                        title: noteTitle.current.value,
+                        body: noteBody.current.value,
+                        color: color.current.value,
+                        footer: 'chatuzPark'
+                    };
+            await NoteService.createNote(newNote);
+            const noteList = await NoteService.getNotes()
+            getNotes(noteList)
+            handleClose()
+        }
     }
 
     // console.log(note)
@@ -64,7 +74,7 @@ const AddNoteForm = (props) => {
     return (
 			<div className={modal ? "form-container" : "form-container hide"}>
 				<div className="add-note-form">
-					<AiOutlineCloseCircle onClick={() => handleClick()} size={22} />
+					<AiOutlineCloseCircle onClick={() => handleClose()} size={22} />
 					<h2>{ formState ? 'editar nota' : 'crear nota' }</h2>
 					<input ref={noteTitle} defaultValue={note.title} type="text" placeholder="note title" />
 					<textarea
@@ -89,7 +99,8 @@ const AddNoteForm = (props) => {
 
 const mapDispatchToProps = {
     setModal,
-    setNote
+    setNote,
+    getNotes
 }
 
 const mapStateToProps = state => {

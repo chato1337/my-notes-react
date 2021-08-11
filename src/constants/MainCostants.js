@@ -1,3 +1,5 @@
+import NoteService from "../services/NoteService";
+
 export class Backend {
 	static ROUTES = {
 		addNoteUrl: "note",
@@ -15,5 +17,17 @@ export class Backend {
 export class Methods {
 	static refreshApp = () => {
 		return window.location.reload()
+	}
+}
+
+export class Note {
+	static blankNote = () => {
+		return {
+            _id: null,
+            title: "",
+            body: "",
+            footer: "",
+            color: "normal"
+		}
 	}
 }
