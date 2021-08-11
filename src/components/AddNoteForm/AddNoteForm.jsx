@@ -15,7 +15,7 @@ const AddNoteForm = (props) => {
     useEffect(() => {
         // console.log(note)
         // console.log(noteTitle.current.value)
-        if(note._id){
+        if(note && note._id){
             setFormState(true)
             noteTitle.current.value = note.title
             noteBody.current.value = note.body

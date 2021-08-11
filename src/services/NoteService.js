@@ -1,5 +1,5 @@
 import axios from "axios";
-import {Backend, Methods} from "../constants/MainCostants"
+import { Backend } from "../constants/MainCostants"
 
 class NoteService {
     static getNotes() {

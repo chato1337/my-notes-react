@@ -1,5 +1,3 @@
-import NoteService from "../services/NoteService";
-
 export class Backend {
 	static ROUTES = {
 		addNoteUrl: "note",
