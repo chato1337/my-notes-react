@@ -6,28 +6,33 @@ const Header = () => {
     const email = useRef(null)
     const password = useRef(null)
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
         const newUser = {
             username: username.current.value,
             email: email.current.value,
             password: password.current.value
         }
-        UserService.createUser(newUser)
-        console.log(newUser)
+        if(UserService.validationSingup(newUser)) {
+            alert('ingrese todos los campos')
+        }else {
+            console.log('creando usuario')
+            // UserService.createUser(newUser)
+        }
     }
 
     return (
         <nav className="header-container">
             <div>Hello: Guest</div>
-            <div>
+            <form>
                 <label htmlFor="">username</label>
-                <input ref={username} type="text" />
+                <input ref={username} type="text" required />
                 <label htmlFor="">email</label>
                 <input ref={email} type="email" />
                 <label htmlFor="">password</label>
-                <input ref={password} type="pasword" />
-                <button onClick={handleSubmit}>Create Account</button>
-            </div>
+                <input ref={password} type="pasword" required />
+                <button type='submit' onClick={handleSubmit}>Create Account</button>
+            </form>
         </nav>
     )
 }

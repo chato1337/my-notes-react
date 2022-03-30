@@ -8,7 +8,8 @@ export class Backend {
 		addUserUrl: "signup"
 	};
 
-	static API_URL = "https://young-escarpment-43192.herokuapp.com/";
+	// static API_URL = "https://young-escarpment-43192.herokuapp.com/";
+	static API_URL = "http://localhost:3001";
 
 }
 
